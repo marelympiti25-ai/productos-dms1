@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <%- include("../sections/head"); %>
+</head>
+<body  class="d.flex flex-colum min-vh-100">
+    <main>
+        <div class="container">
+            <%- include("../sections/menu"); %>
+            <h1>productos EJS</h1>
+
+            <div class="row mt-5">
+
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <a class="btn btn-primary" href="/insertarProducto">
+                        Nuevo Producto
+                    </a>
+                    <div class="card">
+                        <div class="card-header">
+                            <h1>Listado de Productos</h1>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Marca</th>
+                                    <th>Precio</th>
+                                    <th>Editar</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <body>
+                                <%
+                                    productos.forEach(producto => {
+                                %>
+                                    <tr>
+                                        <tr class="align-middle">
+                                            <td><%= producto.id %></td>
+                                            <td><%= producto.nombre %></td>
+                                            <td><%= producto.marca %></td>
+                                            <td><%= producto.precio %></td>
+                                            <td>
+                                                <a class="btn btn-warning" href="/buscarProducto/<%= producto.id %>">   
+                                                    Editar
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-danger" href="/eliminarrProducto/<%= producto.id %>">   
+                                                    Eliminar
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tr>
+                                <%
+                                    });
+                            </body>
+                        </table>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </main>    
+    <footer class="footer mt-auto py-3 bg-light">
+        <%- include("../sections/footer"); %>
+    </footer>
+</body>
+</html>
